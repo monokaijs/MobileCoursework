@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/frameLayout3"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="#21292E"
+  tools:context=".HomeFragment">
+
+  <androidx.cardview.widget.CardView
+    android:id="@+id/cardView2"
+    android:layout_width="0dp"
+    android:layout_height="400dp"
+    android:layout_marginStart="1dp"
+    android:layout_marginTop="-100dp"
+    android:layout_marginEnd="1dp"
+    android:foregroundGravity="left|bottom"
+    app:cardBackgroundColor="@color/primary"
+    app:cardCornerRadius="40dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/view"
+      android:layout_width="match_parent"
+      android:layout_height="126dp"
+      android:layout_gravity="bottom|end">
+
+      <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnStatistics2"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="64dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:textColor="@color/background"
+        app:backgroundTint="#8BC34A"
+        app:cornerRadius="50dp"
+        app:elevation="0dp"
+        app:icon="@drawable/ic_baseline_history_24"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.514" />
+
+      <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnStatistics3"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:textColor="@color/background"
+        app:backgroundTint="#8BC34A"
+        app:cornerRadius="50dp"
+        app:elevation="0dp"
+        app:icon="@drawable/ic_baseline_person_24"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnStatistics4"
+        app:layout_constraintStart_toEndOf="@+id/btnStatistics2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+      <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnStatistics4"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_marginEnd="64dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:textAlignment="center"
+        android:textColor="@color/background"
+        app:backgroundTint="#8BC34A"
+        app:cornerRadius="50dp"
+        app:elevation="0dp"
+        app:icon="@drawable/ic_settings_48"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/view2"
+      android:layout_width="match_parent"
+      android:layout_height="174dp"
+      android:layout_marginTop="100dp">
+
+      <TextView
+        android:id="@+id/txtWelcomeDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/welcomeDescription"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+      <TextView
+        android:id="@+id/txtWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/welcome"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtWelcomeDescription"
+        app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+  </androidx.cardview.widget.CardView>
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/homeExpenseList"
+    android:layout_width="409dp"
+    android:layout_height="428dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/cardView2"
+    />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
