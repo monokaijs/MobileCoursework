@@ -16,7 +16,7 @@ public class HomeExpenseListAdapter extends RecyclerView.Adapter<HomeExpenseList
   private ItemClickListener mClickListener;
 
   // data is passed into the constructor
-  HomeExpenseListAdapter(Context context, List<String> data) {
+  public HomeExpenseListAdapter(Context context, List<String> data) {
     this.mInflater = LayoutInflater.from(context);
     this.mData = data;
   }

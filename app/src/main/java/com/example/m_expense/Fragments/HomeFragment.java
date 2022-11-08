@@ -1,4 +1,4 @@
-package com.example.m_expense;
+package com.example.m_expense.Fragments;
 
 import android.os.Bundle;
 
@@ -13,6 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import com.example.m_expense.HomeExpenseListAdapter;
+import com.example.m_expense.R;
 
 import java.util.ArrayList;
 

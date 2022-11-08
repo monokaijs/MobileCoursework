@@ -6,33 +6,24 @@
     app:startDestination="@id/HomeFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.m_expense.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
-        <action
-          android:id="@+id/action_FirstFragment_to_SecondFragment"
-          app:destination="@id/SecondFragment" />
-        <action
-          android:id="@+id/action_FirstFragment_to_Home"
-          app:destination="@id/HomeFragment" />
+        android:id="@+id/HomeFragment"
+        android:name="com.example.m_expense.Fragments.HomeFragment"
+        android:label="@string/home_fragment_label"
+        tools:layout="@layout/fragment_home">
+        <action android:id="@+id/act_home_to_newExpense"
+            app:destination="@id/NewExpense"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.m_expense.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
+        android:id="@+id/NewExpense"
+        android:name="com.example.m_expense.Fragments.NewExpense"
+        android:label="@string/new_expense_fragment_label"
+        tools:layout="@layout/fragment_new_expense">
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
-    <fragment
-      android:id="@+id/HomeFragment"
-      android:name="com.example.m_expense.HomeFragment"
-      android:label="@string/second_fragment_label"
-      tools:layout="@layout/fragment_home">
-
+            android:id="@+id/act_newExpense_to_home"
+            app:destination="@id/HomeFragment" />
     </fragment>
 </navigation>
