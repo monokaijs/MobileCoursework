@@ -1,10 +1,13 @@
 package com.example.m_expense.Fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +19,8 @@ import android.widget.LinearLayout;
 
 import com.example.m_expense.HomeExpenseListAdapter;
 import com.example.m_expense.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -56,6 +61,26 @@ public class HomeFragment extends Fragment {
       recyclerView.setLayoutManager(new LinearLayoutManager(this.getView().getContext()));
       adapter = new HomeExpenseListAdapter(this.getContext(), items);
       recyclerView.setAdapter(adapter);
+    }
+    setupFAB();
+  }
+  private void setupFAB() {
+    Activity activity = getActivity();
+    if (activity != null) {
+      FloatingActionButton fab = activity.findViewById(R.id.fabNewExpense);
+      if (fab != null) {
+        fab.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            if (getActivity() != null) {
+              Fragment fragment = getActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
+              if (fragment != null) {
+                NavHostFragment.findNavController(fragment).navigate(R.id.act_home_to_newExpense);
+              }
+            }
+          }
+        });
+      }
     }
   }
 }

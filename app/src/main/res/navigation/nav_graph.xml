@@ -25,5 +25,13 @@
         <action
             android:id="@+id/act_newExpense_to_home"
             app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/act_newExpense_to_mapPicker"
+            app:destination="@id/mapPicker" />
     </fragment>
+    <fragment
+        android:id="@+id/mapPicker"
+        android:name="com.example.m_expense.Fragments.MapPicker"
+        android:label="fragment_map_picker"
+        tools:layout="@layout/fragment_map_picker" />
 </navigation>

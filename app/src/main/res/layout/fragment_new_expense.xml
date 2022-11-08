@@ -1,20 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/newExpenseLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
     android:backgroundTint="@color/background"
-    tools:context=".Fragments.NewExpense" >
+    tools:context=".Fragments.NewExpense">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/newExpenseToolbar"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:title="@string/new_expense_fragment_label"
         app:titleTextColor="@color/background" />
-</FrameLayout>
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/view5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newExpenseToolbar">
+
+        <ScrollView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inpDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="60dp"
+                    android:background="@color/input_bg"
+                    android:gravity="top"
+                    android:hint="Trip date"
+                    android:paddingVertical="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="40dp"
+                    android:singleLine="false"
+                    android:textColor="@color/white"
+                    android:textColorHint="#54FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inpTripDate"
+                    tools:layout_conversion_absoluteHeight="61dp"
+                    tools:layout_conversion_absoluteWidth="411dp" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="DESCRIPTION"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/inpDescription"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inpTripDate"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="60dp"
+                    android:background="@color/input_bg"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="Trip date"
+                    android:lines="1"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="40dp"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textColorHint="#54FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inpTripDestination"
+                    tools:layout_conversion_absoluteHeight="61dp"
+                    tools:layout_conversion_absoluteWidth="411dp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/destination_"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/inpTripDestination"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageView
+                    android:id="@+id/btnOpenMapView"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:clickable="true"
+                    android:contextClickable="true"
+                    android:longClickable="true"
+                    android:src="@drawable/ic_baseline_pin_drop_24"
+                    app:layout_constraintBottom_toTopOf="@+id/inpTripDestination"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inpTripDestination"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="60dp"
+                    android:background="@color/input_bg"
+                    android:hint="@string/destination"
+                    android:lines="1"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="40dp"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textColorHint="#54FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inpTripName"
+                    tools:layout_conversion_absoluteHeight="61dp"
+                    tools:layout_conversion_absoluteWidth="411dp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="DATE"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/inpTripDate"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inpTripName"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="100dp"
+                    android:background="@color/input_bg"
+                    android:hint="@string/trip_name"
+                    android:lines="1"
+                    android:paddingHorizontal="16dp"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textColorHint="#54FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_conversion_absoluteHeight="61dp"
+                    tools:layout_conversion_absoluteWidth="411dp" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/trip_name_"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/inpTripName"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Switch
+                    android:id="@+id/swRiskAssessment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="Requires Risk Assessment"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inpDescription" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="RISK ASSESSMENT"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/swRiskAssessment"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/view5"
+        app:layout_constraintTop_toTopOf="@+id/view5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

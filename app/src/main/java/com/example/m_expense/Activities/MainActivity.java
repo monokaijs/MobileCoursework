@@ -1,20 +1,18 @@
 package com.example.m_expense.Activities;
 
+import android.annotation.SuppressLint;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 
 import com.example.m_expense.R;
-import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.util.Log;
-import android.view.View;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -23,18 +21,32 @@ import com.example.m_expense.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import org.jetbrains.annotations.NotNull;
 
+public class MainActivity extends AppCompatActivity {
+  @NotNull static MainActivity instance = null;
   private AppBarConfiguration appBarConfiguration;
   private ActivityMainBinding binding;
+  LocationManager mLocationManager;
 
+  @SuppressLint("MissingPermission")
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    MainActivity.instance = this;
 
     binding = ActivityMainBinding.inflate(getLayoutInflater());
     setContentView(binding.getRoot());
+//    mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+//    mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 15000, 500, mLocationListener);
   }
+
+  private final LocationListener mLocationListener = new LocationListener() {
+    @Override
+    public void onLocationChanged(final Location location) {
+      //your code here
+    }
+  };
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
@@ -65,10 +77,8 @@ public class MainActivity extends AppCompatActivity {
         || super.onSupportNavigateUp();
   }
 
-  public void onAddNewExpensePressed(View view) {
-    Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
-    if (fragment != null) {
-      NavHostFragment.findNavController(fragment).navigate(R.id.act_home_to_newExpense);
-    }
+  @NonNull
+  public static MainActivity getInstance() {
+    return instance;
   }
 }
