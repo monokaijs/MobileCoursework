@@ -1,4 +1,4 @@
-package com.example.m_expense;
+package com.example.m_expense.Fragments;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.m_expense.R;
 
 public class Settings extends Fragment {
   public Settings() {
