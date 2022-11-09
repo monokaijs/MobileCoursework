@@ -21,6 +21,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.m_expense.TripExpensesListAdapter;
 import com.example.m_expense.databinding.ActivityMainBinding;
 
 import android.util.Log;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
   private ActivityMainBinding binding;
   public TripDatabaseHandler tripDb;
   public static HomeTripListAdapter homeListAdapter;
+  public static TripExpensesListAdapter tripExpensesListAdapter;
   static public List<Trip> trips;
   static public Trip currentTrip;
   static public String newTripMode = "create";

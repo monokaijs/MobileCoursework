@@ -9,6 +9,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,11 +25,14 @@ import android.widget.Toast;
 import com.example.m_expense.Activities.MainActivity;
 import com.example.m_expense.Elements.Trip;
 import com.example.m_expense.R;
+import com.example.m_expense.RecyclerTouchListener;
+import com.example.m_expense.TripExpensesListAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class TripDetail extends Fragment {
   MainActivity activity = MainActivity.getInstance();
   Trip currentTrip = activity.tripDb.getTrip(MainActivity.currentTrip.id);
+  TripExpensesListAdapter tripExpensesListAdapter = new TripExpensesListAdapter(activity.getBaseContext(), activity.tripDb.getAllTripExpenses(currentTrip.id));
 
   public TripDetail() {
     // Required empty public constructor
@@ -109,6 +114,25 @@ public class TripDetail extends Fragment {
           .setNegativeButton(android.R.string.no, null).show();
       }
     });
+
+    if (this.getView() != null) {
+      // set up the RecyclerView
+      RecyclerView recyclerView = this.getView().findViewById(R.id.listTripExpenses);
+      recyclerView.setLayoutManager(new LinearLayoutManager(this.getView().getContext()));
+      recyclerView.setAdapter(tripExpensesListAdapter);
+      recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
+        @Override
+        public void onClick(View view, int position) {
+          MainActivity.currentTrip = MainActivity.trips.get(position);
+          MainActivity.navigate(R.id.action_HomeFragment_to_tripDetail);
+        }
+
+        @Override
+        public void onLongClick(View view, int position) {
+
+        }
+      }));
+    }
   }
 
   @Override

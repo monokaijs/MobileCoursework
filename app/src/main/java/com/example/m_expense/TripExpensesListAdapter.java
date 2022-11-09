@@ -11,25 +11,26 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.m_expense.Elements.Trip;
+import com.example.m_expense.Elements.TripExpense;
 
 import java.util.List;
 
-public class HomeTripListAdapter extends RecyclerView.Adapter<HomeTripListAdapter.ViewHolder> {
-  private List<Trip> mData;
+public class TripExpensesListAdapter  extends RecyclerView.Adapter<TripExpensesListAdapter.ViewHolder> {
+  private List<TripExpense> mData;
   private LayoutInflater mInflater;
-  private ItemClickListener mClickListener;
+  private TripExpensesListAdapter.ItemClickListener mClickListener;
 
   // data is passed into the constructor
-  public HomeTripListAdapter(Context context, List<Trip> data) {
+  public TripExpensesListAdapter(Context context, List<TripExpense> data) {
     this.mInflater = LayoutInflater.from(context);
     this.mData = data;
   }
 
   // inflates the row layout from xml when needed
   @Override
-  public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = mInflater.inflate(R.layout.triplist_row, parent, false);
-    return new ViewHolder(view);
+  public TripExpensesListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    View view = mInflater.inflate(R.layout.trip_expense_list_row, parent, false);
+    return new TripExpensesListAdapter.ViewHolder(view);
   }
 
 
@@ -37,11 +38,11 @@ public class HomeTripListAdapter extends RecyclerView.Adapter<HomeTripListAdapte
   // binds the data to the TextView in each row
   @SuppressLint("SetTextI18n")
   @Override
-  public void onBindViewHolder(ViewHolder holder, int position) {
-    Trip trip = mData.get(position);
-    holder.myTextView.setText(trip.name);
-    holder.txtCost.setText("$" + trip.budget);
-    holder.txtDescription.setText(trip.destination.toUpperCase());
+  public void onBindViewHolder(TripExpensesListAdapter.ViewHolder holder, int position) {
+    TripExpense expense = mData.get(position);
+//    holder.myTextView.setText(trip.name);
+//    holder.txtCost.setText("$" + trip.budget);
+//    holder.txtDescription.setText(trip.destination.toUpperCase());
 
   }
 
@@ -54,15 +55,17 @@ public class HomeTripListAdapter extends RecyclerView.Adapter<HomeTripListAdapte
 
   // stores and recycles views as they are scrolled off screen
   public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    TextView myTextView;
+    TextView txtExpenseName;
+    TextView txtExpenseCategory;
     TextView txtCost;
-    TextView txtDescription;
+    TextView txtExpenseDate;
 
     ViewHolder(View itemView) {
       super(itemView);
-      myTextView = itemView.findViewById(R.id.txtExpenseName);
+      txtExpenseName = itemView.findViewById(R.id.txtExpenseName);
+      txtExpenseCategory = itemView.findViewById(R.id.txtExpenseCategory);
       txtCost = itemView.findViewById(R.id.txtCost);
-      txtDescription = itemView.findViewById(R.id.txtExpenseCategory);
+      txtExpenseDate = itemView.findViewById(R.id.txtExpenseDate);
       itemView.setOnClickListener(this);
     }
 
@@ -74,16 +77,16 @@ public class HomeTripListAdapter extends RecyclerView.Adapter<HomeTripListAdapte
   }
 
   // convenience method for getting data at click position
-  Trip getItem(int id) {
+  TripExpense getItem(int id) {
     return mData.get(id);
   }
 
-  public void setItems(List<Trip> trips) {
-    mData = trips;
+  public void setItems(List<TripExpense> expenses) {
+    mData = expenses;
   }
 
   // allows clicks events to be caught
-  void setClickListener(ItemClickListener itemClickListener) {
+  void setClickListener(TripExpensesListAdapter.ItemClickListener itemClickListener) {
     this.mClickListener = itemClickListener;
   }
 
