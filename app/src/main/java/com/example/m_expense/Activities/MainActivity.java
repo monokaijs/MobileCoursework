@@ -14,8 +14,10 @@ import com.example.m_expense.R;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -60,12 +62,12 @@ public class MainActivity extends AppCompatActivity {
     }
   };
 
-//  @Override
-//  public boolean onCreateOptionsMenu(Menu menu) {
-//    // Inflate the menu; this adds items to the action bar if it is present.
-//    getMenuInflater().inflate(R.menu.menu_main, menu);
-//    return true;
-//  }
+  static public void navigate(int actionId) {
+    Fragment fragment = MainActivity.getInstance().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
+    if (fragment != null) {
+      NavHostFragment.findNavController(fragment).navigate(actionId);
+    }
+  }
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {

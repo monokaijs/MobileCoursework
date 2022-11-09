@@ -72,6 +72,12 @@ public class TripDatabaseHandler extends SQLiteOpenHelper {
     db.close();
   }
 
+  public void deleteAllTrips() {
+    SQLiteDatabase db = this.getReadableDatabase();
+    db.execSQL(String.format("DROP TABLE IF EXISTS %s", TABLE_NAME));
+    onCreate(db);
+  }
+
   public List<Trip> getAllTrips() {
     List<Trip> tripList = new ArrayList<>();
     String query = "SELECT * FROM " + TABLE_NAME;

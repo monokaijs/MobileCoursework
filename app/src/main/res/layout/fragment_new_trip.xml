@@ -39,6 +39,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingBottom="60dp"
                 android:scrollbars="vertical"
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +91,7 @@
                     android:paddingStart="16dp"
                     android:paddingEnd="40dp"
                     android:singleLine="false"
-                    android:textColor="@color/background"
+                    android:textColor="@color/white"
                     android:textColorHint="#54FFFFFF"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"

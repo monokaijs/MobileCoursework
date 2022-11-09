@@ -41,6 +41,7 @@ public class HomeTripListAdapter extends RecyclerView.Adapter<HomeTripListAdapte
     Trip trip = mData.get(position);
     holder.myTextView.setText(trip.name);
     holder.txtCost.setText("$" + trip.budget);
+    holder.txtDescription.setText(trip.destination.toUpperCase());
 
   }
 
@@ -55,11 +56,13 @@ public class HomeTripListAdapter extends RecyclerView.Adapter<HomeTripListAdapte
   public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     TextView myTextView;
     TextView txtCost;
+    TextView txtDescription;
 
     ViewHolder(View itemView) {
       super(itemView);
       myTextView = itemView.findViewById(R.id.expenseItemName);
       txtCost = itemView.findViewById(R.id.txtCost);
+      txtDescription = itemView.findViewById(R.id.txtDescripton);
       itemView.setOnClickListener(this);
     }
 

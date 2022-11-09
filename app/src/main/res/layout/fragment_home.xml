@@ -43,7 +43,7 @@
         android:layout_gravity="bottom|end">
 
       <com.google.android.material.button.MaterialButton
-          android:id="@+id/btnStatistics2"
+          android:id="@+id/btnHistory"
           android:layout_width="68dp"
           android:layout_height="68dp"
           android:layout_marginStart="64dp"
@@ -63,7 +63,7 @@
           app:layout_constraintVertical_bias="0.514" />
 
       <com.google.android.material.button.MaterialButton
-          android:id="@+id/btnStatistics3"
+          android:id="@+id/btnPersonal"
           android:layout_width="68dp"
           android:layout_height="68dp"
           android:insetTop="0dp"
@@ -77,12 +77,12 @@
           app:iconPadding="0dp"
           app:iconSize="32dp"
           app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toStartOf="@+id/btnStatistics4"
-          app:layout_constraintStart_toEndOf="@+id/btnStatistics2"
+          app:layout_constraintEnd_toStartOf="@+id/btnSettings"
+          app:layout_constraintStart_toEndOf="@+id/btnHistory"
           app:layout_constraintTop_toTopOf="parent" />
 
       <com.google.android.material.button.MaterialButton
-          android:id="@+id/btnStatistics4"
+          android:id="@+id/btnSettings"
           android:layout_width="68dp"
           android:layout_height="68dp"
           android:layout_marginEnd="64dp"

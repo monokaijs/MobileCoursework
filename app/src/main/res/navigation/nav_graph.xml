@@ -19,6 +19,12 @@
         <action
             android:id="@+id/action_HomeFragment_to_tripDetail"
             app:destination="@id/tripDetail" />
+        <action
+            android:id="@+id/action_HomeFragment_to_settings"
+            app:destination="@id/settings" />
+        <action
+            android:id="@+id/action_HomeFragment_to_history"
+            app:destination="@id/history" />
     </fragment>
     <fragment
         android:id="@+id/NewTrip"
@@ -48,5 +54,23 @@
         <action
             android:id="@+id/action_tripDetail_to_NewTrip"
             app:destination="@id/NewTrip" />
+    </fragment>
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.example.m_expense.Fragments.Settings"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settings_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/history"
+        android:name="com.example.m_expense.Fragments.History"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_history_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
     </fragment>
 </navigation>

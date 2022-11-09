@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.example.m_expense.Activities.MainActivity;
@@ -30,6 +31,8 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
   protected RecyclerView mRecyclerView;
   protected RecyclerView.LayoutManager mLayoutManager;
+
+  MainActivity activity = MainActivity.getInstance();
 
   public HomeFragment() {
     // Required empty public constructor
@@ -50,8 +53,6 @@ public class HomeFragment extends Fragment {
   public void onResume() {
     super.onResume();
     if (this.getView() != null) {
-      // data to populate the RecyclerView with
-
       // set up the RecyclerView
       RecyclerView recyclerView = this.getView().findViewById(R.id.homeExpenseList);
       recyclerView.setLayoutManager(new LinearLayoutManager(this.getView().getContext()));
@@ -60,10 +61,7 @@ public class HomeFragment extends Fragment {
         @Override
         public void onClick(View view, int position) {
           MainActivity.currentTrip = MainActivity.trips.get(position);
-          Fragment fragment = MainActivity.getInstance().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
-          if (fragment != null) {
-            NavHostFragment.findNavController(fragment).navigate(R.id.action_HomeFragment_to_tripDetail);
-          }
+          MainActivity.navigate(R.id.action_HomeFragment_to_tripDetail);
         }
 
         @Override
@@ -73,25 +71,34 @@ public class HomeFragment extends Fragment {
       }));
     }
     setupFAB();
-  }
-  private void setupFAB() {
-    Activity activity = getActivity();
-    if (activity != null) {
-      FloatingActionButton fab = activity.findViewById(R.id.fabNewTrip);
-      if (fab != null) {
-        fab.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-            if (getActivity() != null) {
-              MainActivity.newTripMode = "create";
-              Fragment fragment = getActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
-              if (fragment != null) {
-                NavHostFragment.findNavController(fragment).navigate(R.id.act_home_to_newTrip);
-              }
-            }
-          }
-        });
+
+    Button btnSettings = activity.findViewById(R.id.btnSettings);
+    Button btnPersonal = activity.findViewById(R.id.btnPersonal);
+    Button btnHistory = activity.findViewById(R.id.btnHistory);
+
+    btnSettings.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        MainActivity.navigate(R.id.action_HomeFragment_to_settings);
       }
-    }
+    });
+    btnHistory.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        MainActivity.navigate(R.id.action_HomeFragment_to_history);
+      }
+    });
+
+  }
+
+  private void setupFAB() {
+    FloatingActionButton fab = MainActivity.getInstance().findViewById(R.id.fabNewTrip);
+    fab.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        MainActivity.newTripMode = "create";
+        MainActivity.navigate(R.id.act_home_to_newTrip);
+      }
+    });
   }
 }
