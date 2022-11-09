@@ -59,7 +59,7 @@ public class Settings extends Fragment {
               MainActivity.trips = new ArrayList<Trip>();
               MainActivity.homeListAdapter.setItems(MainActivity.trips);
               MainActivity.homeListAdapter.notifyDataSetChanged();
-              Toast.makeText(activity, "Data cleared!", Toast.LENGTH_LONG).show();
+              Toast.makeText(activity, "Data cleared!", Toast.LENGTH_SHORT).show();
             }})
           .setNegativeButton(android.R.string.no, null).show();
       }

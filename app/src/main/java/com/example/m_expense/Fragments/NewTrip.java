@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +18,10 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.example.m_expense.Activities.MainActivity;
+import com.example.m_expense.Controllers.TripDatabaseHandler;
 import com.example.m_expense.Elements.Trip;
 import com.example.m_expense.R;
 
@@ -56,12 +59,27 @@ public class NewTrip extends Fragment {
         String tripDate = inpTripDate.getText().toString();
         String tripDest = inpTripDest.getText().toString();
         String tripDesc = inpTripDesc.getText().toString();
-        int budget = Integer.parseInt(inpTripBudget.getText().toString());
+        String budgetText = inpTripBudget.getText().toString();
+        int budget = Integer.parseInt(budgetText.isEmpty() ? "0" : budgetText);
         boolean tripRiskAssessment = swRiskAssessment.isChecked();
 
+        if (tripName.isEmpty() || tripDate.isEmpty() || tripDest.isEmpty()) {
+          Toast.makeText(activity, "Please enter all required information.", Toast.LENGTH_SHORT).show();
+
+          return;
+        }
+
+        Log.i("CHECKED", tripRiskAssessment ? "CHECKED": "NOT CHECKED");
+
         Trip trip = new Trip(tripName, tripDesc, tripDest, tripDate, tripRiskAssessment, budget);
-        MainActivity.getInstance().tripDb.addTrip(trip);
-        MainActivity.trips.add(trip);
+
+        if (MainActivity.newTripMode.equals("edit")) {
+          trip.id = MainActivity.currentTrip.id;
+          MainActivity.getInstance().tripDb.updateTrip(trip);
+        } else {
+          MainActivity.getInstance().tripDb.addTrip(trip);
+        }
+        MainActivity.trips = MainActivity.getInstance().tripDb.getAllTrips();
         MainActivity.homeListAdapter.setItems(MainActivity.trips);
         MainActivity.homeListAdapter.notifyDataSetChanged();
         goHome();
@@ -95,8 +113,11 @@ public class NewTrip extends Fragment {
       inpTripDest.setText(currentTrip.destination);
       inpTripBudget.setText(String.valueOf(currentTrip.budget));
       swRiskAssessment.setChecked(currentTrip.requiresRiskAssessment);
+      Log.i("DEBUG", currentTrip.requiresRiskAssessment ? "ASSESS": "NOT ASSESS");
 
       finishBtn.setText("SAVE");
+    } else {
+      inpTripBudget.setText("0");
     }
   }
 

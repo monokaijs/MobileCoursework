@@ -27,7 +27,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class TripDetail extends Fragment {
   MainActivity activity = MainActivity.getInstance();
-  Trip currentTrip = MainActivity.currentTrip;
+  Trip currentTrip = activity.tripDb.getTrip(MainActivity.currentTrip.id);
 
   public TripDetail() {
     // Required empty public constructor
@@ -70,7 +70,9 @@ public class TripDetail extends Fragment {
     TextView txtTripName = activity.findViewById(R.id.txtTripName);
     TextView txtDetailTripBudget = activity.findViewById(R.id.txtDetailTripBudget);
     TextView txtDetailTripDate = activity.findViewById(R.id.txtDetailTripDate);
+    TextView txtTripDesc = activity.findViewById(R.id.txtTripDescription);
     txtTripName.setText(currentTrip.name);
+    txtTripDesc.setText(currentTrip.description.isEmpty() ? "No description" : currentTrip.description);
     txtDetailTripBudget.setText("Trip budget: $" + currentTrip.budget);
     txtDetailTripDate.setText("Trip date: " + currentTrip.date);
 

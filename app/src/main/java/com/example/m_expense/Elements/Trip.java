@@ -29,15 +29,6 @@ public class Trip {
     this.budget = budget;
   }
 
-  public Trip(String name, String description, String destination, String date, Boolean requiresRiskAssessment) {
-    super();
-    this.name = name;
-    this.description = description;
-    this.destination = destination;
-    this.date = date;
-    this.requiresRiskAssessment = requiresRiskAssessment;
-  }
-
   public Trip(String name, String description, String destination, String date, Boolean requiresRiskAssessment, int budget) {
     super();
     this.name = name;
