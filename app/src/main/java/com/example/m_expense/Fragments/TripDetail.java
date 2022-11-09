@@ -93,7 +93,7 @@ public class TripDetail extends Fragment {
       public void onClick(View view) {
         new AlertDialog.Builder(activity, R.style.DialogTheme)
           .setTitle("WARNING")
-          .setMessage("Do you really want to whatever?")
+          .setMessage("Do you really want to delete this trip?")
           .setIcon(R.drawable.ic_baseline_delete_24)
           .setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")
