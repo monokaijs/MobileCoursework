@@ -6,6 +6,9 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 
+import com.example.m_expense.Controllers.TripDatabaseHandler;
+import com.example.m_expense.Elements.Trip;
+import com.example.m_expense.HomeExpenseListAdapter;
 import com.example.m_expense.R;
 
 import androidx.annotation.NonNull;
@@ -18,15 +21,21 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.m_expense.databinding.ActivityMainBinding;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
   @NotNull static MainActivity instance = null;
   private AppBarConfiguration appBarConfiguration;
   private ActivityMainBinding binding;
+  public TripDatabaseHandler tripDb;
+  public static HomeExpenseListAdapter homeListAdapter;
+  static public List<Trip> trips;
   LocationManager mLocationManager;
 
   @SuppressLint("MissingPermission")
@@ -37,8 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
     binding = ActivityMainBinding.inflate(getLayoutInflater());
     setContentView(binding.getRoot());
-//    mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-//    mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 15000, 500, mLocationListener);
+    tripDb = new TripDatabaseHandler(this.getBaseContext());
+    MainActivity.trips = tripDb.getAllTrips();
+    homeListAdapter = new HomeExpenseListAdapter(getBaseContext(), MainActivity.trips);
   }
 
   private final LocationListener mLocationListener = new LocationListener() {

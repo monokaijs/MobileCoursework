@@ -1,5 +1,6 @@
 package com.example.m_expense.Fragments;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 
@@ -14,11 +15,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
+import android.widget.Toast;
 
 import com.example.m_expense.Activities.MainActivity;
+import com.example.m_expense.Elements.Trip;
 import com.example.m_expense.R;
 import com.example.m_expense.databinding.FragmentNewExpenseBinding;
 
@@ -50,6 +55,24 @@ public class NewExpense extends Fragment {
         }
       }
     });
+    Button finishBtn = activity.findViewById(R.id.btnFinish);
+    finishBtn.setOnClickListener(new View.OnClickListener() {
+      @SuppressLint("NotifyDataSetChanged")
+      public void onClick(View v) {
+        String tripName = ((EditText)activity.findViewById(R.id.inpTripName)).getText().toString();
+        String tripDate = ((EditText)activity.findViewById(R.id.inpTripDate)).getText().toString();
+        String tripDest = ((EditText)activity.findViewById(R.id.inpTripDestination)).getText().toString();
+        String tripDesc = ((EditText)activity.findViewById(R.id.inpTripDescription)).getText().toString();
+        boolean tripRiskAssessment = ((Switch)activity.findViewById(R.id.swRiskAssessment)).isChecked();
+
+        Trip trip = new Trip(tripName, tripDesc, tripDest, tripDate, tripRiskAssessment);
+        MainActivity.getInstance().tripDb.addTrip(trip);
+        MainActivity.trips.add(trip);
+        MainActivity.homeListAdapter.setItems(MainActivity.trips);
+        MainActivity.homeListAdapter.notifyDataSetChanged();
+        goHome();
+      }
+    });
 
 
     editText = (EditText) activity.findViewById(R.id.inpTripDate);
@@ -79,15 +102,18 @@ public class NewExpense extends Fragment {
       toolbar.setNavigationOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-          Fragment fragment = getParentFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
-          if (fragment != null) {
-            NavHostFragment.findNavController(fragment).navigate(R.id.act_newExpense_to_home);
-          }
+          goHome();
         }
       });
     }
   }
 
+  public void goHome() {
+    Fragment fragment = getParentFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
+    if (fragment != null) {
+      NavHostFragment.findNavController(fragment).navigate(R.id.act_newExpense_to_home);
+    }
+  }
   @Override
   public void onResume() {
     super.onResume();

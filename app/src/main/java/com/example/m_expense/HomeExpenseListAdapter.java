@@ -8,15 +8,17 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.m_expense.Elements.Trip;
+
 import java.util.List;
 
 public class HomeExpenseListAdapter extends RecyclerView.Adapter<HomeExpenseListAdapter.ViewHolder> {
-  private List<String> mData;
+  private List<Trip> mData;
   private LayoutInflater mInflater;
   private ItemClickListener mClickListener;
 
   // data is passed into the constructor
-  public HomeExpenseListAdapter(Context context, List<String> data) {
+  public HomeExpenseListAdapter(Context context, List<Trip> data) {
     this.mInflater = LayoutInflater.from(context);
     this.mData = data;
   }
@@ -28,11 +30,13 @@ public class HomeExpenseListAdapter extends RecyclerView.Adapter<HomeExpenseList
     return new ViewHolder(view);
   }
 
+
+
   // binds the data to the TextView in each row
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    String animal = mData.get(position);
-    holder.myTextView.setText(animal);
+    Trip trip = mData.get(position);
+    holder.myTextView.setText(trip.name);
   }
 
   // total number of rows
@@ -59,8 +63,12 @@ public class HomeExpenseListAdapter extends RecyclerView.Adapter<HomeExpenseList
   }
 
   // convenience method for getting data at click position
-  String getItem(int id) {
+  Trip getItem(int id) {
     return mData.get(id);
+  }
+
+  public void setItems(List<Trip> trips) {
+    mData = trips;
   }
 
   // allows clicks events to be caught

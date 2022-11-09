@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.example.m_expense.Activities.MainActivity;
 import com.example.m_expense.HomeExpenseListAdapter;
 import com.example.m_expense.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -27,7 +28,6 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
   protected RecyclerView mRecyclerView;
   protected RecyclerView.LayoutManager mLayoutManager;
-  HomeExpenseListAdapter adapter;
 
   public HomeFragment() {
     // Required empty public constructor
@@ -49,18 +49,11 @@ public class HomeFragment extends Fragment {
     super.onResume();
     if (this.getView() != null) {
       // data to populate the RecyclerView with
-      ArrayList<String> items = new ArrayList<>();
-      items.add("Horse");
-      items.add("Cow");
-      items.add("Camel");
-      items.add("Sheep");
-      items.add("Goat");
 
       // set up the RecyclerView
       RecyclerView recyclerView = this.getView().findViewById(R.id.homeExpenseList);
       recyclerView.setLayoutManager(new LinearLayoutManager(this.getView().getContext()));
-      adapter = new HomeExpenseListAdapter(this.getContext(), items);
-      recyclerView.setAdapter(adapter);
+      recyclerView.setAdapter(MainActivity.homeListAdapter);
     }
     setupFAB();
   }
