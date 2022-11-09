@@ -60,6 +60,10 @@ public class HomeFragment extends Fragment {
         @Override
         public void onClick(View view, int position) {
           MainActivity.currentTrip = MainActivity.trips.get(position);
+          Fragment fragment = MainActivity.getInstance().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
+          if (fragment != null) {
+            NavHostFragment.findNavController(fragment).navigate(R.id.action_HomeFragment_to_tripDetail);
+          }
         }
 
         @Override
@@ -73,15 +77,16 @@ public class HomeFragment extends Fragment {
   private void setupFAB() {
     Activity activity = getActivity();
     if (activity != null) {
-      FloatingActionButton fab = activity.findViewById(R.id.fabNewExpense);
+      FloatingActionButton fab = activity.findViewById(R.id.fabNewTrip);
       if (fab != null) {
         fab.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
             if (getActivity() != null) {
+              MainActivity.newTripMode = "create";
               Fragment fragment = getActivity().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
               if (fragment != null) {
-                NavHostFragment.findNavController(fragment).navigate(R.id.act_home_to_newExpense);
+                NavHostFragment.findNavController(fragment).navigate(R.id.act_home_to_newTrip);
               }
             }
           }

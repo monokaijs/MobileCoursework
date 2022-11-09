@@ -13,5 +13,21 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:windowLightStatusBar">true</item>
+        <item name="actionMenuTextColor">@color/white</item>
+        <item name="actionBarItemBackground">@color/background</item>
+    </style>
+    <style name="DarkToolbar" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorOnPrimary">@color/background</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:background">@color/background</item>
+        <item name="android:itemTextAppearance">@color/white</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+    </style>
+
+    <style name="OverflowMenuStyle" parent="Widget.MaterialComponents.PopupMenu.Overflow">
+        <item name="android:popupBackground">@color/background</item>
     </style>
 </resources>

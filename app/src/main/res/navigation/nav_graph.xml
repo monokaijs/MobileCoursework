@@ -10,23 +10,26 @@
         android:name="com.example.m_expense.Fragments.HomeFragment"
         android:label="@string/home_fragment_label"
         tools:layout="@layout/fragment_home">
-        <action android:id="@+id/act_home_to_newExpense"
-            app:destination="@id/NewExpense"
+        <action android:id="@+id/act_home_to_newTrip"
+            app:destination="@id/NewTrip"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_HomeFragment_to_tripDetail"
+            app:destination="@id/tripDetail" />
     </fragment>
     <fragment
-        android:id="@+id/NewExpense"
+        android:id="@+id/NewTrip"
         android:name="com.example.m_expense.Fragments.NewTrip"
         android:label="@string/new_trip_fragment_label"
         tools:layout="@layout/fragment_new_trip">
         <action
-            android:id="@+id/act_newExpense_to_home"
+            android:id="@+id/act_newTrip_to_home"
             app:destination="@id/HomeFragment" />
         <action
-            android:id="@+id/act_newExpense_to_mapPicker"
+            android:id="@+id/act_newTrip_to_mapPicker"
             app:destination="@id/mapPicker" />
     </fragment>
     <fragment
@@ -34,4 +37,16 @@
         android:name="com.example.m_expense.Fragments.MapPicker"
         android:label="fragment_map_picker"
         tools:layout="@layout/fragment_map_picker" />
+    <fragment
+        android:id="@+id/tripDetail"
+        android:name="com.example.m_expense.Fragments.TripDetail"
+        android:label="fragment_trip_detail"
+        tools:layout="@layout/fragment_trip_detail" >
+        <action
+            android:id="@+id/action_tripDetail_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_tripDetail_to_NewTrip"
+            app:destination="@id/NewTrip" />
+    </fragment>
 </navigation>

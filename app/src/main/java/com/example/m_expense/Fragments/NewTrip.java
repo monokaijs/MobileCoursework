@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -29,6 +30,13 @@ public class NewTrip extends Fragment {
   AppCompatActivity activity = MainActivity.getInstance();
   EditText editText;
   Calendar myCalendar = Calendar.getInstance();
+  EditText inpTripName;
+  EditText inpTripDate;
+  EditText inpTripDesc;
+  EditText inpTripDest;
+  EditText inpTripBudget;
+  Switch swRiskAssessment;
+  Button finishBtn;
 
   public NewTrip() {
     // Required empty public constructor
@@ -40,16 +48,16 @@ public class NewTrip extends Fragment {
   }
 
   private void bindListeners() {
-    Button finishBtn = activity.findViewById(R.id.btnFinish);
+    finishBtn = activity.findViewById(R.id.btnFinish);
     finishBtn.setOnClickListener(new View.OnClickListener() {
       @SuppressLint("NotifyDataSetChanged")
       public void onClick(View v) {
-        String tripName = ((EditText)activity.findViewById(R.id.inpTripName)).getText().toString();
-        String tripDate = ((EditText)activity.findViewById(R.id.inpTripDate)).getText().toString();
-        String tripDest = ((EditText)activity.findViewById(R.id.inpTripDestination)).getText().toString();
-        String tripDesc = ((EditText)activity.findViewById(R.id.inpTripDescription)).getText().toString();
-        int budget = Integer.parseInt(((EditText)activity.findViewById(R.id.inpTripBudget)).getText().toString());
-        boolean tripRiskAssessment = ((Switch)activity.findViewById(R.id.swRiskAssessment)).isChecked();
+        String tripName = inpTripName.getText().toString();
+        String tripDate = inpTripDate.getText().toString();
+        String tripDest = inpTripDest.getText().toString();
+        String tripDesc = inpTripDesc.getText().toString();
+        int budget = Integer.parseInt(inpTripBudget.getText().toString());
+        boolean tripRiskAssessment = swRiskAssessment.isChecked();
 
         Trip trip = new Trip(tripName, tripDesc, tripDest, tripDate, tripRiskAssessment, budget);
         MainActivity.getInstance().tripDb.addTrip(trip);
@@ -78,13 +86,30 @@ public class NewTrip extends Fragment {
         new DatePickerDialog(activity, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
       }
     });
+
+    if (MainActivity.newTripMode.equals("edit")) {
+      Trip currentTrip = MainActivity.currentTrip;
+      inpTripName.setText(currentTrip.name);
+      inpTripDate.setText(currentTrip.date);
+      inpTripDesc.setText(currentTrip.description);
+      inpTripDest.setText(currentTrip.destination);
+      inpTripBudget.setText(String.valueOf(currentTrip.budget));
+      swRiskAssessment.setChecked(currentTrip.requiresRiskAssessment);
+
+      finishBtn.setText("SAVE");
+    }
   }
 
   private void setupToolbar() {
-    Toolbar toolbar = activity.findViewById(R.id.newExpenseToolbar);
+    Toolbar toolbar = activity.findViewById(R.id.newTripToolbar);
     if (toolbar != null) {
       activity.setSupportActionBar(toolbar);
       toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24);
+      if (MainActivity.newTripMode.equals("edit")) {
+        toolbar.setTitle("Edit Trip");
+      } else {
+        toolbar.setTitle("New Trip");
+      }
       toolbar.setNavigationOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -97,13 +122,20 @@ public class NewTrip extends Fragment {
   public void goHome() {
     Fragment fragment = getParentFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
     if (fragment != null) {
-      NavHostFragment.findNavController(fragment).navigate(R.id.act_newExpense_to_home);
+      NavHostFragment.findNavController(fragment).navigate(R.id.act_newTrip_to_home);
     }
   }
+
   @Override
   public void onResume() {
     super.onResume();
     this.setupToolbar();
+    inpTripName = (EditText) activity.findViewById(R.id.inpTripName);
+    inpTripDate = (EditText) activity.findViewById(R.id.inpTripDate);
+    inpTripDest = (EditText) activity.findViewById(R.id.inpTripDestination);
+    inpTripDesc = (EditText) activity.findViewById(R.id.inpTripDescription);
+    inpTripBudget = (EditText) activity.findViewById(R.id.inpTripBudget);
+    swRiskAssessment = (Switch) activity.findViewById(R.id.swRiskAssessment);
     this.bindListeners();
   }
 

@@ -14,6 +14,8 @@
         <!-- Customize your theme here. -->
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="actionMenuTextColor">@color/background</item>
+        <item name="actionBarItemBackground">@color/background</item>
     </style>
 
     <style name="Theme.MExpense.NoActionBar">
@@ -21,7 +23,22 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.MExpense.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="DarkToolbar" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorOnPrimary">@color/background</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:background">@color/background</item>
+        <item name="android:itemTextAppearance">@color/white</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+    </style>
+
+    <style name="OverflowMenuStyle" parent="Widget.MaterialComponents.PopupMenu.Overflow">
+        <item name="android:popupBackground">@color/background</item>
+    </style>
+
+    <style name="Theme.MExpense.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="Theme.MExpense.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -4,4 +4,12 @@
     <item name="android:background">@color/gray_400</item>
     <item name="exampleColor">@color/light_blue_400</item>
   </style>
+  <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <item name="android:background">@color/background</item>
+    <item name="android:textColorPrimary">@color/white</item>
+    <item name="android:textColor">@color/primary</item>
+    <item name="android:fontFamily">@font/poppins_bold</item>
+    <item name="android:iconTint">@color/primary</item>
+    <item name="android:tint">@color/primary</item>
+  </style>
 </resources>
