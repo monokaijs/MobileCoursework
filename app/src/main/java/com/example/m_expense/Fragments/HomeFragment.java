@@ -18,8 +18,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.m_expense.Activities.MainActivity;
+import com.example.m_expense.Elements.Trip;
 import com.example.m_expense.HomeTripListAdapter;
 import com.example.m_expense.R;
+import com.example.m_expense.RecyclerTouchListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -54,6 +56,17 @@ public class HomeFragment extends Fragment {
       RecyclerView recyclerView = this.getView().findViewById(R.id.homeExpenseList);
       recyclerView.setLayoutManager(new LinearLayoutManager(this.getView().getContext()));
       recyclerView.setAdapter(MainActivity.homeListAdapter);
+      recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
+        @Override
+        public void onClick(View view, int position) {
+          MainActivity.currentTrip = MainActivity.trips.get(position);
+        }
+
+        @Override
+        public void onLongClick(View view, int position) {
+
+        }
+      }));
     }
     setupFAB();
   }

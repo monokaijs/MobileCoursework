@@ -2,6 +2,7 @@ package com.example.m_expense;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,7 @@ public class HomeTripListAdapter extends RecyclerView.Adapter<HomeTripListAdapte
 
     @Override
     public void onClick(View view) {
+      Log.i("DEBUG", "Clicked");
       if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
     }
   }

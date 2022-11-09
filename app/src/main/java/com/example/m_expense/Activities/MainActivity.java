@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
   public TripDatabaseHandler tripDb;
   public static HomeTripListAdapter homeListAdapter;
   static public List<Trip> trips;
+  static public Trip currentTrip;
   LocationManager mLocationManager;
 
   @SuppressLint("MissingPermission")
