@@ -96,8 +96,13 @@ public class TripDetail extends Fragment {
           .setMessage("Do you really want to whatever?")
           .setIcon(R.drawable.ic_baseline_delete_24)
           .setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
+            @SuppressLint("NotifyDataSetChanged")
             public void onClick(DialogInterface dialog, int whichButton) {
-              Toast.makeText(activity, "Yaay", Toast.LENGTH_SHORT).show();
+//              Toast.makeText(activity, "Yaay", Toast.LENGTH_SHORT).show();
+              activity.tripDb.deleteTrip(MainActivity.currentTrip.id);
+              MainActivity.trips.remove(MainActivity.currentTrip);
+              MainActivity.homeListAdapter.notifyDataSetChanged();
+              goHome();
             }})
           .setNegativeButton(android.R.string.no, null).show();
       }

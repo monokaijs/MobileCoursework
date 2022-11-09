@@ -59,22 +59,28 @@ public class TripDatabaseHandler extends SQLiteOpenHelper {
   public Trip getTrip(int tripId) {
     SQLiteDatabase db = this.getReadableDatabase();
 
-    Cursor cursor = db.query(TABLE_NAME, null, KEY_ID + " = ?", new String[] { String.valueOf(tripId) },null, null, null);
-    if(cursor != null)
+    Cursor cursor = db.query(TABLE_NAME, null, KEY_ID + " = ?", new String[]{String.valueOf(tripId)}, null, null, null);
+    if (cursor != null)
       cursor.moveToFirst();
     assert cursor != null;
     return new Trip(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(6) == "TRUE");
   }
 
+  public void deleteTrip(int tripId) {
+    SQLiteDatabase db = this.getWritableDatabase();
+    db.delete(TABLE_NAME, KEY_ID + " = ?", new String[]{String.valueOf(tripId)});
+    db.close();
+  }
+
   public List<Trip> getAllTrips() {
-    List<Trip>  tripList = new ArrayList<>();
+    List<Trip> tripList = new ArrayList<>();
     String query = "SELECT * FROM " + TABLE_NAME;
 
     SQLiteDatabase db = this.getReadableDatabase();
     Cursor cursor = db.rawQuery(query, null);
     cursor.moveToFirst();
 
-    while(!cursor.isAfterLast()) {
+    while (!cursor.isAfterLast()) {
       Trip trip = new Trip(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5) == "TRUE");
       tripList.add(trip);
       cursor.moveToNext();

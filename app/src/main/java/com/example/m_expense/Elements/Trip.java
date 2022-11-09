@@ -1,7 +1,7 @@
 package com.example.m_expense.Elements;
 
 public class Trip {
-  int id;
+  public int id;
   public String name;
   public String description;
   public String destination;
