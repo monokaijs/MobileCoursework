@@ -1,5 +1,6 @@
 package com.example.m_expense;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +13,13 @@ import com.example.m_expense.Elements.Trip;
 
 import java.util.List;
 
-public class HomeExpenseListAdapter extends RecyclerView.Adapter<HomeExpenseListAdapter.ViewHolder> {
+public class HomeTripListAdapter extends RecyclerView.Adapter<HomeTripListAdapter.ViewHolder> {
   private List<Trip> mData;
   private LayoutInflater mInflater;
   private ItemClickListener mClickListener;
 
   // data is passed into the constructor
-  public HomeExpenseListAdapter(Context context, List<Trip> data) {
+  public HomeTripListAdapter(Context context, List<Trip> data) {
     this.mInflater = LayoutInflater.from(context);
     this.mData = data;
   }
@@ -26,17 +27,20 @@ public class HomeExpenseListAdapter extends RecyclerView.Adapter<HomeExpenseList
   // inflates the row layout from xml when needed
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = mInflater.inflate(R.layout.expenselist_row, parent, false);
+    View view = mInflater.inflate(R.layout.triplist_row, parent, false);
     return new ViewHolder(view);
   }
 
 
 
   // binds the data to the TextView in each row
+  @SuppressLint("SetTextI18n")
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
     Trip trip = mData.get(position);
     holder.myTextView.setText(trip.name);
+    holder.txtCost.setText("$" + trip.budget);
+
   }
 
   // total number of rows
@@ -49,10 +53,12 @@ public class HomeExpenseListAdapter extends RecyclerView.Adapter<HomeExpenseList
   // stores and recycles views as they are scrolled off screen
   public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     TextView myTextView;
+    TextView txtCost;
 
     ViewHolder(View itemView) {
       super(itemView);
       myTextView = itemView.findViewById(R.id.expenseItemName);
+      txtCost = itemView.findViewById(R.id.txtCost);
       itemView.setOnClickListener(this);
     }
 

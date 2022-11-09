@@ -3,7 +3,7 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="home_fragment_label">Home</string>
-    <string name="new_expense_fragment_label">New Expense</string>
+    <string name="new_trip_fragment_label">New Trip</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 

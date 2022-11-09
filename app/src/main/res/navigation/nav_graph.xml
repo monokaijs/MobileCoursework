@@ -19,9 +19,9 @@
     </fragment>
     <fragment
         android:id="@+id/NewExpense"
-        android:name="com.example.m_expense.Fragments.NewExpense"
-        android:label="@string/new_expense_fragment_label"
-        tools:layout="@layout/fragment_new_expense">
+        android:name="com.example.m_expense.Fragments.NewTrip"
+        android:label="@string/new_trip_fragment_label"
+        tools:layout="@layout/fragment_new_trip">
         <action
             android:id="@+id/act_newExpense_to_home"
             app:destination="@id/HomeFragment" />

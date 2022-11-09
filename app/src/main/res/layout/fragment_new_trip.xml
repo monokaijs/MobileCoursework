@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:backgroundTint="@color/background"
-    tools:context=".Fragments.NewExpense">
+    tools:context=".Fragments.NewTrip">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/newExpenseToolbar"
@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/new_expense_fragment_label"
+        app:title="@string/new_trip_fragment_label"
         app:titleTextColor="@color/background" />
 
     <RelativeLayout
@@ -45,6 +45,40 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inpTripBudget"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="60dp"
+                    android:background="@color/input_bg"
+                    android:hint="Budget"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="40dp"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textColorHint="#54FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inpTripDate"
+                    tools:layout_conversion_absoluteHeight="61dp"
+                    tools:layout_conversion_absoluteWidth="411dp" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="BUDGET"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/inpTripBudget"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/inpTripDescription"
                     android:layout_width="0dp"
                     android:layout_height="120dp"
@@ -61,7 +95,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/inpTripDate"
+                    app:layout_constraintTop_toBottomOf="@+id/inpTripBudget"
                     tools:layout_conversion_absoluteHeight="61dp"
                     tools:layout_conversion_absoluteWidth="411dp" />
 
@@ -114,19 +148,6 @@
                     android:textSize="12sp"
                     app:layout_constraintBottom_toTopOf="@+id/inpTripDestination"
                     app:layout_constraintStart_toStartOf="parent" />
-
-                <ImageView
-                    android:id="@+id/btnOpenMapView"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:clickable="true"
-                    android:contextClickable="true"
-                    android:longClickable="true"
-                    android:src="@drawable/ic_baseline_pin_drop_24"
-                    app:layout_constraintBottom_toTopOf="@+id/inpTripDestination"
-                    app:layout_constraintEnd_toEndOf="parent" />
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/inpTripDestination"
@@ -220,6 +241,40 @@
                     android:textSize="12sp"
                     app:layout_constraintBottom_toTopOf="@+id/swRiskAssessment"
                     app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:foregroundTint="#FFFFFF"
+                    android:src="@drawable/ic_baseline_calendar_today_24"
+                    android:tint="#FFFFFF"
+                    app:layout_constraintBottom_toBottomOf="@+id/inpTripDate"
+                    app:layout_constraintEnd_toEndOf="@+id/inpTripDate"
+                    app:layout_constraintTop_toTopOf="@+id/inpTripDate" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_baseline_attach_money_24"
+                    android:tint="#FFFFFF"
+                    app:layout_constraintBottom_toBottomOf="@+id/inpTripBudget"
+                    app:layout_constraintEnd_toEndOf="@+id/inpTripBudget"
+                    app:layout_constraintTop_toTopOf="@+id/inpTripBudget"
+                    app:layout_constraintVertical_bias="0.527" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_baseline_pin_drop_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/inpTripDestination"
+                    app:layout_constraintEnd_toEndOf="@+id/inpTripDestination"
+                    app:layout_constraintTop_toTopOf="@+id/inpTripDestination" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

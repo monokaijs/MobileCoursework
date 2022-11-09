@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.m_expense.Activities.MainActivity;
-import com.example.m_expense.HomeExpenseListAdapter;
+import com.example.m_expense.HomeTripListAdapter;
 import com.example.m_expense.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;

@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import com.example.m_expense.Controllers.TripDatabaseHandler;
 import com.example.m_expense.Elements.Trip;
-import com.example.m_expense.HomeExpenseListAdapter;
+import com.example.m_expense.HomeTripListAdapter;
 import com.example.m_expense.R;
 
 import androidx.annotation.NonNull;
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
   private AppBarConfiguration appBarConfiguration;
   private ActivityMainBinding binding;
   public TripDatabaseHandler tripDb;
-  public static HomeExpenseListAdapter homeListAdapter;
+  public static HomeTripListAdapter homeListAdapter;
   static public List<Trip> trips;
   LocationManager mLocationManager;
 
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(binding.getRoot());
     tripDb = new TripDatabaseHandler(this.getBaseContext());
     MainActivity.trips = tripDb.getAllTrips();
-    homeListAdapter = new HomeExpenseListAdapter(getBaseContext(), MainActivity.trips);
+    homeListAdapter = new HomeTripListAdapter(getBaseContext(), MainActivity.trips);
   }
 
   private final LocationListener mLocationListener = new LocationListener() {
