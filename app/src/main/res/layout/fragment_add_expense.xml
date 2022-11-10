@@ -45,7 +45,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
           android:layout_width="match_parent"
-          android:layout_height="1000dp">
+          android:layout_height="wrap_content"
+            android:paddingBottom="32dp">
 
           <TextView
             android:id="@+id/textView15"
@@ -65,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="8dp"
-            android:text="CATEGORY"
+            android:text="DESCRIPTION"
             android:textColor="@color/primary"
             android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@+id/textInputEditText3"
