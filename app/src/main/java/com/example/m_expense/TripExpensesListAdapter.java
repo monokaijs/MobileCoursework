@@ -41,10 +41,10 @@ public class TripExpensesListAdapter  extends RecyclerView.Adapter<TripExpensesL
   @Override
   public void onBindViewHolder(TripExpensesListAdapter.ViewHolder holder, int position) {
     TripExpense expense = mData.get(position);
-//    holder.myTextView.setText(trip.name);
-//    holder.txtCost.setText("$" + trip.budget);
-//    holder.txtDescription.setText(trip.destination.toUpperCase());
-
+    holder.txtExpenseName.setText(expense.name);
+    holder.txtExpenseCategory.setText(expense.category.toUpperCase());
+    holder.txtCost.setText("$" + expense.cost);
+    holder.txtExpenseDate.setText(expense.date);
   }
 
   // total number of rows
