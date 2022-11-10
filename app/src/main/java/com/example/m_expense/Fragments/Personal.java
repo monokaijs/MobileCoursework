@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.m_expense.Activities.MainActivity;
 import com.example.m_expense.Controllers.ApiHandler;
@@ -21,7 +22,10 @@ import com.example.m_expense.Elements.SyncTripResponse;
 import com.example.m_expense.R;
 import com.google.gson.Gson;
 
+import org.w3c.dom.Text;
+
 import java.io.IOException;
+import java.util.UUID;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -29,6 +33,7 @@ import okhttp3.Response;
 
 public class Personal extends Fragment {
   MainActivity activity = MainActivity.getInstance();
+  public static String userId = UUID.randomUUID().toString();
   boolean syncing = false;
 
   public Personal() {
@@ -45,6 +50,9 @@ public class Personal extends Fragment {
                            Bundle savedInstanceState) {
     // Inflate the layout for this fragment
     View rootView = inflater.inflate(R.layout.fragment_personal, container, false);
+
+    TextView txtUserId = rootView.findViewById(R.id.txtUserId);
+    txtUserId.setText("User ID: " + Personal.userId);
 
     Toolbar toolbar = rootView.findViewById(R.id.personalToolbar);
     activity.setSupportActionBar(toolbar);
