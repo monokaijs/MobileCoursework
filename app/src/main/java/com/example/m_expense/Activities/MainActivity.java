@@ -23,6 +23,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.m_expense.databinding.ActivityMainBinding;
 
+import android.os.StrictMode;
 import android.view.MenuItem;
 
 import org.jetbrains.annotations.NotNull;
@@ -51,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
     tripDb = new TripDatabaseHandler(this.getBaseContext());
     MainActivity.trips = tripDb.getAllTrips();
     homeListAdapter = new HomeTripListAdapter(getBaseContext(), MainActivity.trips);
+
+    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+    StrictMode.setThreadPolicy(policy);
   }
 
   private final LocationListener mLocationListener = new LocationListener() {

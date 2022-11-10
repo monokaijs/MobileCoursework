@@ -70,6 +70,12 @@ public class HomeFragment extends Fragment {
         MainActivity.navigate(R.id.action_HomeFragment_to_settings);
       }
     });
+    btnPersonal.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        MainActivity.navigate(R.id.action_HomeFragment_to_personal);
+      }
+    });
     btnHistory.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {

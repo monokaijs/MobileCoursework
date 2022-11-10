@@ -19,7 +19,6 @@ import com.example.m_expense.Elements.Trip;
 import com.example.m_expense.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Settings extends Fragment {
   MainActivity activity = MainActivity.getInstance();
@@ -44,7 +43,7 @@ public class Settings extends Fragment {
   public void onResume() {
     super.onResume();
     this.setupToolbar();
-    Button btnClearData = activity.findViewById(R.id.btnClearData);
+    Button btnClearData = activity.findViewById(R.id.btnSyncData);
     btnClearData.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
