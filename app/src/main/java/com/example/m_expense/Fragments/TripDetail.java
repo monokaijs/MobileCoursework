@@ -21,14 +21,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.m_expense.Activities.MainActivity;
 import com.example.m_expense.Dialogs.AddExpenseDialog;
 import com.example.m_expense.Elements.Trip;
 import com.example.m_expense.R;
 import com.example.m_expense.RecyclerTouchListener;
-import com.example.m_expense.TripExpensesListAdapter;
+import com.example.m_expense.Adapters.TripExpensesListAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class TripDetail extends Fragment {

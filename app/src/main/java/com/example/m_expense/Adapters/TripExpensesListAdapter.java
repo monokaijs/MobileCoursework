@@ -1,4 +1,4 @@
-package com.example.m_expense;
+package com.example.m_expense.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.m_expense.Elements.Trip;
 import com.example.m_expense.Elements.TripExpense;
+import com.example.m_expense.R;
 
 import java.util.List;
 

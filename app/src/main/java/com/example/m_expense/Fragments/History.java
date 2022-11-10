@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,10 +14,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.m_expense.Activities.MainActivity;
+import com.example.m_expense.Adapters.HistoryListAdapter;
+import com.example.m_expense.Elements.TripExpense;
 import com.example.m_expense.R;
+
+import java.util.List;
 
 public class History extends Fragment {
   MainActivity activity = MainActivity.getInstance();
+  HistoryListAdapter historyListAdapter;
+  List<TripExpense> expenses = activity.tripDb.getAllExpenses();
 
   public History() {
     // Required empty public constructor
@@ -24,6 +32,8 @@ public class History extends Fragment {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
+    historyListAdapter = new HistoryListAdapter(activity, expenses);
   }
 
   @Override
@@ -40,6 +50,10 @@ public class History extends Fragment {
         goHome();
       }
     });
+
+    RecyclerView recyclerView = rootView.findViewById(R.id.expenseHistoryList);
+    recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
+    recyclerView.setAdapter(historyListAdapter);
 
     return rootView;
   }
