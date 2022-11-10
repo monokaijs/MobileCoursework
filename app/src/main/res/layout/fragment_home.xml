@@ -128,7 +128,7 @@
           android:layout_marginBottom="4dp"
           android:fontFamily="@font/poppins_bold"
           android:text="@string/welcome"
-          android:textSize="32sp"
+          android:textSize="24sp"
           app:layout_constraintBottom_toTopOf="@+id/txtWelcomeDescription"
           app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -139,11 +139,50 @@
       android:id="@+id/homeExpenseList"
       android:layout_width="0dp"
       android:layout_height="0dp"
+      android:layout_marginTop="10dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/cardView2"
-      app:layout_constraintVertical_bias="0.0" />
+      app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/textInputLayout"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="16dp"
+      android:layout_marginEnd="16dp"
+      android:textColorHint="#54FFFFFF"
+      app:boxBackgroundColor="@color/input_bg"
+      app:boxCornerRadiusBottomEnd="30dp"
+      app:boxCornerRadiusBottomStart="30dp"
+      app:boxCornerRadiusTopEnd="30dp"
+      app:boxCornerRadiusTopStart="30dp"
+      app:boxStrokeWidth="0dp"
+      app:boxStrokeWidthFocused="0dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inpSearch"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Search..."
+        android:textColor="#FFFFFF" />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <ImageView
+      android:id="@+id/imageView2"
+      android:layout_width="63dp"
+      android:layout_height="38dp"
+      android:layout_weight="1"
+      android:src="@drawable/ic_baseline_search_24"
+      android:tint="@color/primary"
+      app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
+      app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+      app:layout_constraintTop_toTopOf="@+id/textInputLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
