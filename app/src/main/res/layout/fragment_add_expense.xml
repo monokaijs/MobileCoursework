@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/edit_name"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:layout_gravity="center"
+  android:background="@android:color/transparent"
+  android:orientation="vertical">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="574dp"
+    android:background="@color/background">
+
+    <Button
+      android:id="@+id/button"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="16dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginBottom="16dp"
+      android:fontFamily="@font/poppins_medium"
+      android:text="COMPLETE"
+      android:textColor="@color/background"
+      android:textSize="12sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toTopOf="@+id/button"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="1000dp">
+
+          <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="CATEGORY"
+            android:textColor="@color/primary"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+            app:layout_constraintStart_toStartOf="parent" />
+
+          <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="CATEGORY"
+            android:textColor="@color/primary"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/textInputEditText3"
+            app:layout_constraintStart_toStartOf="parent" />
+
+          <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="New Expense"
+            android:textColor="@color/primary"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+          <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="NAME"
+            android:textColor="@color/primary"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/textInputEditText"
+            app:layout_constraintStart_toStartOf="parent" />
+
+          <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="COST"
+            android:textColor="@color/primary"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/textInputEditText2"
+            app:layout_constraintStart_toStartOf="parent" />
+
+          <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:background="@color/input_bg"
+            android:hint="Expense Name"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#54FFFFFF"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+          <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:background="@color/input_bg"
+            android:hint="0,00"
+            android:inputType="number"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="16dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#54FFFFFF"
+            app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
+            tools:layout_editor_absoluteX="0dp" />
+
+          <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:paddingHorizontal="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputEditText2">
+
+            <RadioButton
+              android:id="@+id/radioButton"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Daily expense"
+              android:textColor="#FFFFFF" />
+
+            <RadioButton
+              android:id="@+id/radioButton2"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Transportation"
+              android:textColor="#FFFFFF" />
+
+            <RadioButton
+              android:id="@+id/radioButton3"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Work expense"
+              android:textColor="#FFFFFF" />
+          </RadioGroup>
+
+          <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditText3"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="60dp"
+            android:background="@color/input_bg"
+            android:gravity="top"
+            android:hint="Description"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="16dp"
+            android:singleLine="false"
+            android:textColor="#FDFDFD"
+            android:textColorHint="#54FFFFFF"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+            tools:layout_editor_absoluteX="2dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+      </LinearLayout>
+    </ScrollView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

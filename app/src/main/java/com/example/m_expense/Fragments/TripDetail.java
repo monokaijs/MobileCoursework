@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.m_expense.Activities.MainActivity;
+import com.example.m_expense.Dialogs.AddExpenseDialog;
 import com.example.m_expense.Elements.Trip;
 import com.example.m_expense.R;
 import com.example.m_expense.RecyclerTouchListener;
@@ -95,6 +97,15 @@ public class TripDetail extends Fragment {
       }
     });
 
+    btnAddExpense.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        FragmentManager fm = getParentFragmentManager();
+        AddExpenseDialog addExpenseDialog = AddExpenseDialog.newInstance("Some Title");
+        addExpenseDialog.show(fm, "fragment_edit_name");
+      }
+    });
+
     btnDelete.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
@@ -105,7 +116,6 @@ public class TripDetail extends Fragment {
           .setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")
             public void onClick(DialogInterface dialog, int whichButton) {
-//              Toast.makeText(activity, "Yaay", Toast.LENGTH_SHORT).show();
               activity.tripDb.deleteTrip(MainActivity.currentTrip.id);
               MainActivity.trips.remove(MainActivity.currentTrip);
               MainActivity.homeListAdapter.notifyDataSetChanged();
@@ -123,8 +133,6 @@ public class TripDetail extends Fragment {
       recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
         @Override
         public void onClick(View view, int position) {
-          MainActivity.currentTrip = MainActivity.trips.get(position);
-          MainActivity.navigate(R.id.action_HomeFragment_to_tripDetail);
         }
 
         @Override
