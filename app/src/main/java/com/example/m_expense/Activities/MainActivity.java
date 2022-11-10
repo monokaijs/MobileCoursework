@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import com.example.m_expense.Controllers.TripDatabaseHandler;
 import com.example.m_expense.Elements.Trip;
-import com.example.m_expense.HomeTripListAdapter;
+import com.example.m_expense.Adapters.HomeTripListAdapter;
 import com.example.m_expense.R;
 
 import androidx.annotation.NonNull;
@@ -23,8 +23,6 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.m_expense.databinding.ActivityMainBinding;
 
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import org.jetbrains.annotations.NotNull;

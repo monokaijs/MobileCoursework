@@ -92,6 +92,25 @@ public class TripDatabaseHandler extends SQLiteOpenHelper {
     return expenseList;
   }
 
+  public List<TripExpense> getAllExpenses() {
+    SQLiteDatabase db = this.getReadableDatabase();
+    List<TripExpense> expenseList = new ArrayList<>();
+
+    Cursor cursor = db.rawQuery("SELECT * FROM " + TRIP_EXPENSES_TABLE_NAME + " WHERE ?", new String[]{"1"});
+    cursor.moveToFirst();
+
+    while (!cursor.isAfterLast()) {
+      TripExpense expense = new TripExpense(
+        cursor.getInt(0), cursor.getInt(1), cursor.getString(2),
+        cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getInt(6)
+      );
+      Log.i("DEBUG", cursor.getString(2));
+      expenseList.add(expense);
+      cursor.moveToNext();
+    }
+    return expenseList;
+  }
+
   public void addTrip(Trip trip) {
     SQLiteDatabase db = this.getWritableDatabase();
 
@@ -120,6 +139,19 @@ public class TripDatabaseHandler extends SQLiteOpenHelper {
     SQLiteDatabase db = this.getWritableDatabase();
     db.delete(TRIPS_TABLE_NAME, KEY_ID + " = ?", new String[]{String.valueOf(tripId)});
     db.close();
+  }
+
+  public void deleteAllExpenses() {
+    SQLiteDatabase db = this.getWritableDatabase();
+    db.execSQL(
+      String.format("DROP TABLE IF EXISTS %s", TRIP_EXPENSES_TABLE_NAME)
+    );
+    db.close();
+  }
+
+  public void deleteData() {
+    this.deleteAllTrips();
+    this.deleteAllExpenses();
   }
 
   public void deleteAllTrips() {

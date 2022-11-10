@@ -55,7 +55,7 @@ public class Settings extends Fragment {
           .setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")
             public void onClick(DialogInterface dialog, int whichButton) {
-              activity.tripDb.deleteAllTrips();
+              activity.tripDb.deleteData();
               MainActivity.trips = new ArrayList<Trip>();
               MainActivity.homeListAdapter.setItems(MainActivity.trips);
               MainActivity.homeListAdapter.notifyDataSetChanged();
