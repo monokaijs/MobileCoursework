@@ -80,5 +80,9 @@
         android:id="@+id/personal"
         android:name="com.example.m_expense.Fragments.Personal"
         android:label="fragment_personal"
-        tools:layout="@layout/fragment_personal" />
+        tools:layout="@layout/fragment_personal" >
+        <action
+            android:id="@+id/action_personal_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+    </fragment>
 </navigation>
