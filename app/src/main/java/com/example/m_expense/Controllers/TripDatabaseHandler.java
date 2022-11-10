@@ -39,33 +39,33 @@ public class TripDatabaseHandler extends SQLiteOpenHelper {
   @Override
   public void onCreate(SQLiteDatabase db) {
     db.execSQL(String.format(
-        "CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER)",
-        TRIPS_TABLE_NAME, KEY_ID, KEY_NAME, KEY_DESCRIPTION, KEY_DESTINATION, KEY_DATE, KEY_RISK_ASSESSMENT, KEY_BUDGET
+      "CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER)",
+      TRIPS_TABLE_NAME, KEY_ID, KEY_NAME, KEY_DESCRIPTION, KEY_DESTINATION, KEY_DATE, KEY_RISK_ASSESSMENT, KEY_BUDGET
     ));
     db.execSQL(String.format(
-        "CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s INTEGER, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER)",
-        TRIP_EXPENSES_TABLE_NAME, KEY_ID, KEY_TRIP_ID, KEY_NAME, KEY_DESCRIPTION, KEY_CATEGORY, KEY_DATE, KEY_COST
+      "CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s INTEGER, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER)",
+      TRIP_EXPENSES_TABLE_NAME, KEY_ID, KEY_TRIP_ID, KEY_NAME, KEY_DESCRIPTION, KEY_CATEGORY, KEY_DATE, KEY_COST
     ));
   }
 
   @Override
   public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     db.execSQL(
-        String.format("DROP TABLE IF EXISTS %s", TRIPS_TABLE_NAME)
+      String.format("DROP TABLE IF EXISTS %s", TRIPS_TABLE_NAME)
     );
     db.execSQL(
-        String.format("DROP TABLE IF EXISTS %s", TRIP_EXPENSES_TABLE_NAME)
+      String.format("DROP TABLE IF EXISTS %s", TRIP_EXPENSES_TABLE_NAME)
     );
 
     onCreate(db);
   }
 
-  public void addTripExpense(int tripId, TripExpense expense) {
+  public void addTripExpense(TripExpense expense) {
     SQLiteDatabase db = this.getWritableDatabase();
 
     ContentValues values = new ContentValues();
     values.put(KEY_NAME, expense.name);
-    values.put(KEY_TRIP_ID, tripId);
+    values.put(KEY_TRIP_ID, expense.tripId);
     values.put(KEY_CATEGORY, expense.category);
     values.put(KEY_COST, expense.cost);
     values.put(KEY_DATE, expense.date);
@@ -77,14 +77,15 @@ public class TripDatabaseHandler extends SQLiteOpenHelper {
     SQLiteDatabase db = this.getReadableDatabase();
     List<TripExpense> expenseList = new ArrayList<>();
 
-    Cursor cursor = db.rawQuery("SELECT * FROM " + TRIP_EXPENSES_TABLE_NAME + " WHERE ? = ?", new String[]{KEY_TRIP_ID, String.valueOf(tripId)});
+    Cursor cursor = db.rawQuery("SELECT * FROM " + TRIP_EXPENSES_TABLE_NAME + " WHERE " + KEY_TRIP_ID + " = ?", new String[]{String.valueOf(tripId)});
     cursor.moveToFirst();
 
     while (!cursor.isAfterLast()) {
       TripExpense expense = new TripExpense(
-          cursor.getInt(0), cursor.getInt(1), cursor.getString(2),
-          cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getInt(6)
+        cursor.getInt(0), cursor.getInt(1), cursor.getString(2),
+        cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getInt(6)
       );
+      Log.i("DEBUG", cursor.getString(2));
       expenseList.add(expense);
       cursor.moveToNext();
     }

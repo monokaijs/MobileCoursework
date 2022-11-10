@@ -33,8 +33,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class TripDetail extends Fragment {
   MainActivity activity = MainActivity.getInstance();
-  Trip currentTrip = activity.tripDb.getTrip(MainActivity.currentTrip.id);
-  TripExpensesListAdapter tripExpensesListAdapter = new TripExpensesListAdapter(activity.getBaseContext(), activity.tripDb.getAllTripExpenses(currentTrip.id));
+  public static TripDetail instance;
+  public Trip currentTrip = activity.tripDb.getTrip(MainActivity.currentTrip.id);
+  public TripExpensesListAdapter tripExpensesListAdapter = new TripExpensesListAdapter(activity.getBaseContext(), activity.tripDb.getAllTripExpenses(currentTrip.id));
+  public static AddExpenseDialog addExpenseDialog = AddExpenseDialog.newInstance("Add Expense");
 
   public TripDetail() {
     // Required empty public constructor
@@ -42,6 +44,7 @@ public class TripDetail extends Fragment {
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
+    TripDetail.instance = this;
     super.onCreate(savedInstanceState);
   }
 
@@ -101,8 +104,7 @@ public class TripDetail extends Fragment {
       @Override
       public void onClick(View v) {
         FragmentManager fm = getParentFragmentManager();
-        AddExpenseDialog addExpenseDialog = AddExpenseDialog.newInstance("Some Title");
-        addExpenseDialog.show(fm, "fragment_edit_name");
+        addExpenseDialog.show(fm, "add_expense");
       }
     });
 
@@ -155,5 +157,10 @@ public class TripDetail extends Fragment {
     setHasOptionsMenu(true);
     // Inflate the layout for this fragment
     return inflater.inflate(R.layout.fragment_trip_detail, container, false);
+  }
+
+  @NonNull
+  public static TripDetail getInstance() {
+    return instance;
   }
 }

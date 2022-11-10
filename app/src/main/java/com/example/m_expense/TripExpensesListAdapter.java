@@ -22,6 +22,7 @@ public class TripExpensesListAdapter  extends RecyclerView.Adapter<TripExpensesL
 
   // data is passed into the constructor
   public TripExpensesListAdapter(Context context, List<TripExpense> data) {
+    Log.i("DEBUG", String.valueOf(data.size()));
     this.mInflater = LayoutInflater.from(context);
     this.mData = data;
   }

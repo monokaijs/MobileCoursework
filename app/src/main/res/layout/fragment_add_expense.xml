@@ -15,7 +15,7 @@
     android:background="@color/background">
 
     <Button
-      android:id="@+id/button"
+      android:id="@+id/btnComplete"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginStart="16dp"
@@ -33,7 +33,7 @@
     <ScrollView
       android:layout_width="0dp"
       android:layout_height="0dp"
-      app:layout_constraintBottom_toTopOf="@+id/button"
+      app:layout_constraintBottom_toTopOf="@+id/btnComplete"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent">
@@ -57,7 +57,7 @@
             android:text="CATEGORY"
             android:textColor="@color/primary"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+            app:layout_constraintBottom_toTopOf="@+id/radioGroupExpenseCategory"
             app:layout_constraintStart_toStartOf="parent" />
 
           <TextView
@@ -69,7 +69,7 @@
             android:text="DESCRIPTION"
             android:textColor="@color/primary"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/textInputEditText3"
+            app:layout_constraintBottom_toTopOf="@+id/inpExpenseDescription"
             app:layout_constraintStart_toStartOf="parent" />
 
           <TextView
@@ -94,7 +94,7 @@
             android:text="NAME"
             android:textColor="@color/primary"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/textInputEditText"
+            app:layout_constraintBottom_toTopOf="@+id/inpExpenseName"
             app:layout_constraintStart_toStartOf="parent" />
 
           <TextView
@@ -106,11 +106,11 @@
             android:text="COST"
             android:textColor="@color/primary"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/textInputEditText2"
+            app:layout_constraintBottom_toTopOf="@+id/inpExpenseCost"
             app:layout_constraintStart_toStartOf="parent" />
 
           <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText"
+            android:id="@+id/inpExpenseName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
@@ -123,7 +123,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
           <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText2"
+            android:id="@+id/inpExpenseCost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
@@ -134,11 +134,11 @@
             android:paddingVertical="16dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#54FFFFFF"
-            app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
+            app:layout_constraintTop_toBottomOf="@+id/inpExpenseName"
             tools:layout_editor_absoluteX="0dp" />
 
           <RadioGroup
-            android:id="@+id/radioGroup"
+            android:id="@+id/radioGroupExpenseCategory"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
@@ -146,24 +146,25 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputEditText2">
+            android:checkedButton="@+id/btnRadioDailyExpense"
+            app:layout_constraintTop_toBottomOf="@+id/inpExpenseCost">
 
             <RadioButton
-              android:id="@+id/radioButton"
+              android:id="@+id/btnRadioDailyExpense"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:text="Daily expense"
               android:textColor="#FFFFFF" />
 
             <RadioButton
-              android:id="@+id/radioButton2"
+              android:id="@+id/btnRadioTransportation"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:text="Transportation"
               android:textColor="#FFFFFF" />
 
             <RadioButton
-              android:id="@+id/radioButton3"
+              android:id="@+id/btnRadioWorkExpense"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:text="Work expense"
@@ -171,7 +172,7 @@
           </RadioGroup>
 
           <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText3"
+            android:id="@+id/inpExpenseDescription"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_marginTop="60dp"
@@ -183,7 +184,7 @@
             android:singleLine="false"
             android:textColor="#FDFDFD"
             android:textColorHint="#54FFFFFF"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroupExpenseCategory"
             tools:layout_editor_absoluteX="2dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
       </LinearLayout>
