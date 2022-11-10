@@ -176,6 +176,20 @@ public class TripDatabaseHandler extends SQLiteOpenHelper {
     return tripList;
   }
 
+  public List<Trip> getTripsByName(String name) {
+    List<Trip> tripList = new ArrayList<>();
+    SQLiteDatabase db = this.getReadableDatabase();
+    Cursor cursor = db.rawQuery("SELECT * FROM " + TRIPS_TABLE_NAME + " WHERE instr(" + KEY_NAME + ", ?)", new String[]{name});
+    cursor.moveToFirst();
+
+    while (!cursor.isAfterLast()) {
+      Trip trip = new Trip(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), Objects.equals(cursor.getString(5), "TRUE"), cursor.getInt(6));
+      tripList.add(trip);
+      cursor.moveToNext();
+    }
+    return tripList;
+  }
+
   public void updateTrip(Trip trip) {
     SQLiteDatabase db = this.getWritableDatabase();
     ContentValues values = new ContentValues();
