@@ -122,6 +122,19 @@ public class TripDatabaseHandler extends SQLiteOpenHelper {
     db.close();
   }
 
+  public void deleteAllExpenses() {
+    SQLiteDatabase db = this.getWritableDatabase();
+    db.execSQL(
+      String.format("DROP TABLE IF EXISTS %s", TRIP_EXPENSES_TABLE_NAME)
+    );
+    db.close();
+  }
+
+  public void deleteData() {
+    this.deleteAllTrips();
+    this.deleteAllExpenses();
+  }
+
   public void deleteAllTrips() {
     SQLiteDatabase db = this.getReadableDatabase();
     db.execSQL(String.format("DROP TABLE IF EXISTS %s", TRIPS_TABLE_NAME));
