@@ -148,7 +148,7 @@ public class TripDetail extends Fragment {
   @Override
   public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
     super.onCreateOptionsMenu(menu, inflater);
-    activity.getMenuInflater().inflate(R.menu.menu_trip_detail, menu);
+//    activity.getMenuInflater().inflate(R.menu.menu_trip_detail, menu);
   }
 
   @Override
